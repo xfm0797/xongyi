@@ -1,0 +1,24 @@
+<%
+  // hexo-generator-tag 传入的是标签名字符串（兼容对象写法）
+  var rawTag = page.tag;
+  var tagName = typeof rawTag === 'string' ? rawTag : ((rawTag && rawTag.name) || '');
+%>
+<%- partial('_partial/page-head', {
+  heading: '标签：' + tagName,
+  subheading: '包含该标签的全部产品与资讯',
+  crumbs: [{ label: '全部产品', url: url_for('/archives/') }, { label: tagName }],
+  total: null
+}) %>
+
+<div class="container section">
+  <% if (!page.posts.length) { %>
+  <p class="empty">该标签下暂无内容。</p>
+  <% } else { %>
+  <div class="grid grid--products">
+    <% page.posts.each(function (post) { %>
+    <%- partial('_partial/product-card', { item: post }) %>
+    <% }) %>
+  </div>
+  <% } %>
+  <%- partial('_partial/pagination') %>
+</div>

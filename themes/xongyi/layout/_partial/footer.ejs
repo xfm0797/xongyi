@@ -1,0 +1,85 @@
+<%
+  var co = theme.company || {};
+  var brand = theme.brand || {};
+  var aboutUrl = theme.about_url || '/about-us/';
+  var contactUrl = theme.contact_url || '/contact/';
+  var year = new Date().getFullYear();
+  var startYear = (theme.footer && theme.footer.copyright_start) || '';
+%>
+<section class="prefooter">
+  <div class="container prefooter__inner">
+    <div class="prefooter__text">
+      <h2>需要选型建议或产品报价？</h2>
+      <p>我们的技术销售团队可为您提供仪器选型、参数对比与售后支持。</p>
+    </div>
+    <div class="prefooter__actions">
+      <a class="btn btn--primary" href="<%- url_for(contactUrl) %>">联系我们</a>
+      <a class="btn btn--ghost" href="tel:0757-22333012">电话咨询</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer__grid">
+    <div class="footer__col footer__col--brand">
+      <div class="footer__brand">
+        <span class="brand__mark brand__mark--sm" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="44" height="44" rx="12" fill="#1272c0"/>
+            <path d="M14 30.5 20 17l4 8 4-8 6 13.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="32.5" cy="17" r="2.4" fill="#ffd166"/>
+          </svg>
+        </span>
+        <span class="footer__brand-text">
+          <strong><%= brand.name || '雄亿仪器' %></strong>
+          <em><%= brand.logo_sub || 'XONGYI INSTRUMENTS' %></em>
+        </span>
+      </div>
+      <p class="footer__about"><%- co.full_name || '' %></p>
+      <p class="footer__about"><%= theme.home && theme.home.hero_sub || '' %></p>
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__title">产品分类</h3>
+      <ul class="footer__links">
+        <% (theme.product_categories || []).slice(0, 8).forEach(function (name) { %>
+        <li><a href="<%- cat_url(name) %>"><%- cat_name(name) %></a></li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__title">快捷导航</h3>
+      <ul class="footer__links">
+        <li><a href="<%- url_for('/') %>">首页</a></li>
+        <li><a href="<%- url_for('/archives/') %>">全部产品</a></li>
+        <li><a href="<%- url_for(aboutUrl) %>">企业介绍</a></li>
+        <li><a href="<%- url_for(contactUrl) %>">联系我们</a></li>
+        <li><a href="<%- url_for('/search/') %>">产品搜索</a></li>
+        <li><a href="<%- url_for('/categories/') %>">分类索引</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__title">联系方式</h3>
+      <ul class="footer__contact">
+        <li><span>地址</span><%- co.address || '' %></li>
+        <li><span>电话</span><a href="tel:0757-22333012"><%- co.phone || '' %></a></li>
+        <li><span>手机</span><%- co.mobile || '' %></li>
+        <li><span>传真</span><%- co.fax || '' %></li>
+        <li><span>邮箱</span><a href="mailto:<%= co.email %>"><%- co.email || '' %></a></li>
+        <li><span>联系人</span><%- co.contacts || '' %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>© <%= startYear %><%= startYear ? '-' : '' %><%= year %> <%- co.full_name || brand.name || '' %> <%- (theme.footer && theme.footer.copyright) || '版权所有' %></p>
+      <p class="footer__meta">
+        <% if (theme.footer && theme.footer.icp) { %><span><%- theme.footer.icp %></span><% } %>
+        <% if (theme.footer && theme.footer.note) { %><span class="footer__note"><%- theme.footer.note %></span><% } %>
+      </p>
+    </div>
+  </div>
+</footer>

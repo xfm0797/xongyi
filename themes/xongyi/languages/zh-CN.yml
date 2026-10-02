@@ -1,0 +1,46 @@
+nav:
+  home: 首页
+  products: 产品中心
+  news: 新闻资讯
+  about: 企业介绍
+  contact: 联系我们
+  search: 搜索
+
+search:
+  title: 产品搜索
+  placeholder: 输入产品名称或关键词
+  button: 搜索
+  empty: 未找到匹配的产品，换个关键词试试
+  result: 共找到 %s 个结果
+
+labels:
+  read_more: 查看详情
+  related: 相关产品
+  same_category: 同类产品
+  home: 首页
+  category: 分类
+  categories: 产品分类
+  tags: 标签
+  published: 发布日期
+  hot: 热销
+  all_products: 全部产品
+  inquiry: 咨询此产品
+  call: 电话咨询
+  email: 邮件询价
+  count: 件
+  total: 共 %s 件产品
+  prev: 上一页
+  next: 下一页
+  prev_post: 上一篇
+  next_post: 下一篇
+  no_content: 暂无更多信息
+  view_all: 查看全部
+  top: 返回顶部
+  contact_us: 联系我们
+  more_products: 更多产品
+
+footer:
+  quick_links: 快捷导航
+  product_cats: 产品分类
+  contact: 联系方式
+  copyright: 版权所有

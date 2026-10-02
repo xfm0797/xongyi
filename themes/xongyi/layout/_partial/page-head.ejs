@@ -1,0 +1,28 @@
+<%
+  var trail = (typeof crumbs !== 'undefined' && crumbs) ? crumbs : [];
+  var head = (typeof heading !== 'undefined' && heading) ? heading : page.title;
+  var sub = (typeof subheading !== 'undefined' && subheading) ? subheading : '';
+  var count = (typeof total !== 'undefined') ? total : null;
+%>
+<div class="pagehero">
+  <div class="container">
+    <nav class="crumb" aria-label="面包屑">
+      <a href="<%- url_for('/') %>">首页</a>
+      <% trail.forEach(function (c, i) { %>
+      <span class="crumb__sep">/</span>
+      <% if (c.url && i < trail.length - 1) { %>
+      <a href="<%- c.url %>"><%- c.label %></a>
+      <% } else { %>
+      <span class="crumb__cur"><%- c.label %></span>
+      <% } %>
+      <% }) %>
+    </nav>
+    <div class="pagehero__row">
+      <div>
+        <h1 class="pagehero__title"><%- head %></h1>
+        <% if (sub) { %><p class="pagehero__sub"><%- sub %></p><% } %>
+      </div>
+      <% if (count !== null) { %><span class="pagehero__count"><%- count %> 件产品</span><% } %>
+    </div>
+  </div>
+</div>

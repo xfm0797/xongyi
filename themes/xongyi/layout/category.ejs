@@ -1,0 +1,26 @@
+<%
+  // hexo-generator-category 传入的是分类名字符串（兼容对象写法）
+  var raw = page.category;
+  var cname = typeof raw === 'string' ? raw : ((raw && raw.name) || '');
+  var isNews = (theme.news_categories || []).indexOf(cname) !== -1;
+  var crumb = isNews ? { label: '新闻资讯' } : { label: '全部产品', url: url_for('/archives/') };
+%>
+<%- partial('_partial/page-head', {
+  heading: cat_name(cname),
+  subheading: cat_desc(cname) || ('共 ' + cat_count(cname) + ' 件产品'),
+  crumbs: [crumb, { label: cat_name(cname) }],
+  total: cat_count(cname)
+}) %>
+
+<div class="container section">
+  <% if (!page.posts.length) { %>
+  <p class="empty">该分类下暂无内容。</p>
+  <% } else { %>
+  <div class="grid grid--products">
+    <% page.posts.each(function (post) { %>
+    <%- partial('_partial/product-card', { item: post }) %>
+    <% }) %>
+  </div>
+  <% } %>
+  <%- partial('_partial/pagination') %>
+</div>

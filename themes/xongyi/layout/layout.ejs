@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'zh-CN' %>">
+<%- partial('_partial/head') %>
+<body class="body-<%= is_home() ? 'home' : (is_post() ? 'post' : (is_page() ? 'page' : 'list')) %>">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <%- partial('_partial/header') %>
+  <main id="main" class="site-main">
+    <%- body %>
+  </main>
+  <%- partial('_partial/footer') %>
+  <%- partial('_partial/totop') %>
+  <script>
+    window.XY = {
+      root: '<%- config.root %>',
+      searchUrl: '<%- url_for("/search.json") %>',
+      lightbox: <%= theme.features && theme.features.lightbox !== false ? 'true' : 'false' %>,
+      search: <%= theme.features && theme.features.search !== false ? 'true' : 'false' %>
+    };
+  </script>
+  <script src="<%- url_for('/js/main.js') %>"></script>
+</body>
+</html>

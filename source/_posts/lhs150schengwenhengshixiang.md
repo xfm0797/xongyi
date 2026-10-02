@@ -1,0 +1,20 @@
+---
+title: "LHS150SC恒温恒湿箱"
+date: 2014-04-28
+categories:
+  - ["climate-experiment"]
+tags:
+  - lhs150schengwenhengshixiang
+cover: /images/lhs150schengwenhengshixiang/S201212180031037742.jpg
+---
+
+[![S201212180031037742](/images/lhs150schengwenhengshixiang/S201212180031037742-300x256.jpg)该系列产品有着精确的温度和湿度控制系统,它为产业研究、生物技术测试提供所需要的各种环境模拟条件。因此可广泛适用于药物、纺织、食品加工等无菌试验、稳定性检查以及工业产品的原料性能、产品包装、产品寿命等测试](/images/lhs150schengwenhengshixiang/S201212180031037742.jpg)
+
+| **产品特点** |
+| --- |
+|  |
+
+| 1.带定时功能的数显微电脑温度湿度控制器，控温控湿精确可靠。 2.采用镜面不锈钢内胆，半圆弧四角易清洁，箱内搁板间距可调。 3.采用玻璃观察窗，观察方便明了。 4.设有独立限温报警系统，超过限制温度即自动中断，保护实验安全运行，不发生意外。（选配） |
+| --- |
+
+**技术参数**  <table id="table2" width="520" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2" width="524"><table id="table3" width="520" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td rowspan="2" align="center" bgcolor="#ccffcc" width="104" height="44"><p align="center">型　号</p></td><td colspan="2" align="center" width="418" height="23"><p align="center">恒温恒湿箱LHS系列</p></td></tr><tr><td align="center" width="208" height="23">LHS-150SC</td><td align="center" width="208" height="23">LHS-250SC</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="23">容　积</td><td align="center" width="208" height="23">150L</td><td align="center" width="208" height="23">250L</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="23">电源电压</td><td colspan="2" align="center" width="416" height="23">220V　50Hz</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="23">控温范围</td><td align="center" width="208" height="23"><p align="right">加　湿：</p><p align="right">无加湿：</p></td><td align="center" width="210" height="23"><p align="left">10℃～50℃</p></td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="23">恒温波动度</td><td colspan="2" align="center" width="416" height="23">±1℃</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="23">温度分辨率</td><td colspan="2" align="center" width="416" height="23">0.1℃</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="24">温度均匀性</td><td colspan="2" align="center" width="416" height="24">±2℃</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="24">控湿范围</td><td colspan="2" align="center" width="416" height="24">50～95%RH</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="24">湿度波动</td><td colspan="2" align="center" width="416" height="24">±5%RH</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="24">输入功率</td><td align="center" width="208" height="24">640W</td><td align="center" width="208" height="24">750W</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="24">工作环境温度</td><td colspan="2" align="center" width="416" height="24">5℃～35℃</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="24">内胆尺寸(mm)</td><td align="center" width="208" height="24">500×370×800</td><td align="center" width="208" height="24">600×570×970</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="24">外形尺寸(mm)</td><td align="center" width="208" height="24">600×650×1380</td><td align="center" width="208" height="24">780×745×1510</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="24">载物托架(标配)</td><td align="center" width="208" height="24">3块</td><td align="center" width="208" height="24">4块</td></tr><tr><td align="center" bgcolor="#ccffcc" width="104" height="24">定时范围</td><td colspan="2" align="center" width="416" height="24">1～9999 minutes</td></tr></tbody></table></td></tr><tr><td colspan="2" width="524" height="30">·性能参数测试在空载条件下为：环境温度20℃，环境湿度50%RH</td></tr><tr><td colspan="2" width="524"></td></tr><tr><td colspan="2" width="524">选购件 Options<div></div>1、智能型程序温度控制器.............................RMB 1000.00<div></div>2、打印机..................................................RMB 1200.00<div></div>3、箱体左侧直径50mm测试孔.......................RMB&nbsp; 300.00<div></div>4、限温限制器............................................RMB &nbsp;250.00</td></tr></tbody></table>

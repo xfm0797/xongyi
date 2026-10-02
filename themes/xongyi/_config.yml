@@ -1,0 +1,120 @@
+# ============================================================
+#  主题：xongyi  —  雄亿仪器网 B2B 仪器展示主题
+#  适配 Hexo 7.x
+# ============================================================
+
+# ---------- 品牌 ----------
+brand:
+  name: 雄亿仪器
+  logo_text: 雄亿仪器
+  logo_sub: XONGYI INSTRUMENTS
+  slogan: 检测仪器 · 实验设备专业供应商
+  since: "2001"
+
+# ---------- 公司信息（页脚 / 联系按钮）----------
+company:
+  full_name: 佛山市顺德区雄亿检测仪器有限公司
+  address: 广东省佛山市顺德区大良环市北路 279 号
+  postcode: "528300"
+  phone: "0757-22333012 / 22333011 / 22333010"
+  mobile: "13727437137 / 13702609877"
+  fax: "0757-22333012 转 375"
+  email: sales@xongyi.com
+  email2: xyjcyq@126.com
+  site: https://www.xongyi.com
+  contacts: 梁先生 / 覃先生 / 江小姐 / 黄小姐
+
+# ---------- 首页文案 ----------
+home:
+  hero_title: 专业检测仪器一站式采购
+  hero_sub: 涂料检测 · 橡塑检测 · 光学仪器 · 实验室通用分析仪器 · 实验耗材
+  hero_desc: 二十余年行业经验，专业销售与代理，为涂料、橡塑、电镀、电子等行业提供检测仪器及实验耗材整体配套服务。
+  search_placeholder: 输入产品名称，如「粘度计」「测厚仪」「色差仪」
+  category_title: 产品分类
+  category_desc: 按应用领域快速查找所需检测仪器
+  hot_title: 热销产品
+  hot_desc: 客户咨询与采购最多的仪器设备
+  latest_title: 最新上架
+  latest_desc: 持续更新的产品与资讯
+  news_title: 新闻资讯
+  news_desc: 公司与行业动态
+
+# ---------- 分类中文名 ----------
+cat_names:
+  paint-detection: 涂料检测仪器
+  general-analysis: 通用分析仪器
+  optical-experiments: 光学仪器
+  climate-experiment: 环境试验箱
+  oil-detection: 石油产品检测
+  electronic-balance: 电子天平
+  rubber-testing: 橡胶检测仪器
+  consumable-supplies: 实验耗材
+  hot-product: 热销产品
+  product: 产品展示
+  company-news: 公司新闻
+  trade-news: 行业动态
+  news: 新闻资讯
+
+# ---------- 分类简短说明 ----------
+cat_desc:
+  paint-detection: 粘度计、测厚仪、色差仪、光泽度仪、硬度计等
+  general-analysis: 天平、干燥箱、培养箱、搅拌器等实验通用设备
+  optical-experiments: 分光光度计、比色箱、反射率仪等光学分析仪器
+  climate-experiment: 高低温、恒温恒湿、盐雾、紫外老化等试验箱
+  oil-detection: 闪点、粘度、蒸馏、针入度等石油产品试验器
+  electronic-balance: 分析天平、精密电子秤、密度天平
+  rubber-testing: 橡胶、塑料及相关材料检测仪器
+  consumable-supplies: 玻璃器皿、化学试剂、实验耗材
+  hot-product: 客户咨询与采购最多的热门机型
+  product: 综合产品展示
+  company-news: 公司动态与公告
+  trade-news: 行业资讯与动态
+  news: 新闻资讯
+
+# ---------- 导航分组 ----------
+product_categories:
+  - paint-detection
+  - general-analysis
+  - optical-experiments
+  - climate-experiment
+  - oil-detection
+  - electronic-balance
+  - rubber-testing
+  - consumable-supplies
+  - product
+
+news_categories:
+  - company-news
+  - trade-news
+  - news
+
+featured_categories:
+  - hot-product
+
+# ---------- 首页数量 ----------
+hot_count: 8
+latest_count: 8
+
+# ---------- 静态页面 ----------
+about_url: /about-us/
+contact_url: /contact/
+
+# ---------- 功能开关 ----------
+features:
+  search: true          # 站内产品搜索
+  lightbox: true        # 产品图放大预览
+  back_to_top: true     # 返回顶部
+  related: true         # 相关产品推荐
+
+# ---------- 第三方 ----------
+# 百度统计 / 51.la 等脚本 ID，留空则不注入
+analytics:
+  provider: ""
+  id: ""
+
+# ---------- 页脚 ----------
+footer:
+  copyright_start: "2001"
+  icp: ""
+  police: ""
+  note: 本站所售仪器均可提供技术选型与售后支持

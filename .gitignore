@@ -1,0 +1,15 @@
+# Hexo
+node_modules/
+public/
+db.json
+.deploy*/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp

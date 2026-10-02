@@ -1,0 +1,46 @@
+nav:
+  home: Home
+  products: Products
+  news: News
+  about: About
+  contact: Contact
+  search: Search
+
+search:
+  title: Product Search
+  placeholder: Enter a product name or keyword
+  button: Search
+  empty: No matching products found
+  result: "%s results"
+
+labels:
+  read_more: View details
+  related: Related products
+  same_category: Same category
+  home: Home
+  category: Category
+  categories: Categories
+  tags: Tags
+  published: Published
+  hot: Hot
+  all_products: All products
+  inquiry: Inquire
+  call: Call us
+  email: Email
+  count: items
+  total: "%s products"
+  prev: Prev
+  next: Next
+  prev_post: Previous
+  next_post: Next
+  no_content: No more information
+  view_all: View all
+  top: Back to top
+  contact_us: Contact us
+  more_products: More products
+
+footer:
+  quick_links: Quick links
+  product_cats: Categories
+  contact: Contact
+  copyright: All rights reserved

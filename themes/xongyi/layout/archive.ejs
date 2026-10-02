@@ -1,0 +1,15 @@
+<%- partial('_partial/page-head', {
+  heading: '全部产品',
+  subheading: '涂料检测 · 通用分析 · 光学仪器 · 环境试验 · 石油检测 · 电子天平 · 橡胶检测 · 实验耗材',
+  crumbs: [{ label: '全部产品' }],
+  total: site.posts.length
+}) %>
+
+<div class="container section">
+  <div class="grid grid--products">
+    <% page.posts.each(function (post) { %>
+    <%- partial('_partial/product-card', { item: post }) %>
+    <% }) %>
+  </div>
+  <%- partial('_partial/pagination') %>
+</div>

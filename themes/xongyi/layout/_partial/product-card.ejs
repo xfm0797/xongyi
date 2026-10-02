@@ -1,0 +1,25 @@
+<%
+  var pc = primary_category(item);
+  var cov = first_image(item);
+  var iconName = pc ? pc.name : 'product';
+%>
+<article class="pcard">
+  <a class="pcard__media" href="<%- xy_url(item.path) %>" aria-label="<%- item.title %>">
+    <% if (cov) { %>
+    <img src="<%- cov %>" alt="<%- item.title %>" loading="lazy" decoding="async">
+    <% } else { %>
+    <span class="pcard__ph"><%- cat_icon(iconName) %></span>
+    <% } %>
+    <% if (in_category(item, 'hot-product')) { %><span class="pcard__badge">热销</span><% } %>
+  </a>
+  <div class="pcard__body">
+    <h3 class="pcard__title"><a href="<%- xy_url(item.path) %>"><%- item.title %></a></h3>
+    <p class="pcard__desc"><%- plain_excerpt(item, 42) || '点击查看产品详细参数与说明' %></p>
+    <div class="pcard__foot">
+      <% if (pc) { %>
+      <a class="chip" href="<%- cat_url(pc.name) %>"><%- cat_name(pc.name) %></a>
+      <% } %>
+      <span class="pcard__more">查看详情<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></span>
+    </div>
+  </div>
+</article>

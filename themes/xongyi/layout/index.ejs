@@ -1,0 +1,160 @@
+<%
+  var home = theme.home || {};
+  var hotName = (theme.featured_categories || ['hot-product'])[0];
+  var hotList = cat_posts(hotName, theme.hot_count || 8);
+  if (!hotList.length) hotList = site.posts.sort('-date').limit(theme.hot_count || 8).toArray();
+  var latestList = site.posts.sort('-date').limit(theme.latest_count || 8).toArray();
+
+  var newsSet = theme.news_categories || [];
+  var newsList = [];
+  site.posts.sort('-date').each(function (p) {
+    if (newsList.length >= 5) return;
+    var hit = false;
+    if (p.categories) p.categories.each(function (c) { if (newsSet.indexOf(c.name) !== -1) hit = true; });
+    if (hit) newsList.push(p);
+  });
+
+  var productCats = theme.product_categories || [];
+  var total = site.posts.length;
+%>
+
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <p class="hero__eyebrow"><%= theme.brand && theme.brand.slogan || '检测仪器 · 实验设备专业供应商' %></p>
+      <h1 class="hero__title"><%- home.hero_title || '专业检测仪器一站式采购' %></h1>
+      <p class="hero__sub"><%- home.hero_sub || '' %></p>
+      <p class="hero__desc"><%- home.hero_desc || '' %></p>
+
+      <form class="hero__search" action="<%- url_for('/search/') %>" method="get" role="search">
+        <svg class="hero__search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        <input type="search" name="q" placeholder="<%- home.search_placeholder || '输入产品名称搜索' %>" aria-label="搜索产品">
+        <button type="submit">搜索产品</button>
+      </form>
+
+      <ul class="hero__tags">
+        <% ['粘度计','测厚仪','色差仪','光泽度仪','试验箱','电子天平'].forEach(function (k) { %>
+        <li><a href="<%- url_for('/search/') %>?q=<%- encodeURIComponent(k) %>"><%= k %></a></li>
+        <% }) %>
+      </ul>
+    </div>
+
+    <div class="hero__panel">
+      <div class="hero__stat"><b><%= total %>+</b><span>在售产品</span></div>
+      <div class="hero__stat"><b><%= productCats.length %></b><span>产品分类</span></div>
+      <div class="hero__stat"><b>20+</b><span>年行业经验</span></div>
+      <div class="hero__stat"><b>1000+</b><span>服务客户</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <header class="section__head">
+      <div>
+        <h2 class="section__title"><%- home.category_title || '产品分类' %></h2>
+        <p class="section__desc"><%- home.category_desc || '' %></p>
+      </div>
+      <a class="section__more" href="<%- url_for('/categories/') %>">全部分类<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
+    </header>
+
+    <div class="cat-grid">
+      <% productCats.forEach(function (name, i) { %>
+      <a class="cat-card" href="<%- cat_url(name) %>">
+        <span class="cat-card__icon cat-card__icon--<%= i % 8 %>"><%- cat_icon(name) %></span>
+        <span class="cat-card__body">
+          <strong class="cat-card__name"><%- cat_name(name) %></strong>
+          <em class="cat-card__desc"><%- cat_desc(name) %></em>
+        </span>
+        <span class="cat-card__count"><%- cat_count(name) %></span>
+      </a>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <header class="section__head">
+      <div>
+        <h2 class="section__title"><%- home.hot_title || '热销产品' %></h2>
+        <p class="section__desc"><%- home.hot_desc || '' %></p>
+      </div>
+      <a class="section__more" href="<%- cat_url(hotName) %>">更多热销<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
+    </header>
+    <div class="grid grid--products">
+      <% hotList.forEach(function (post) { %>
+      <%- partial('_partial/product-card', { item: post }) %>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cols">
+      <div class="cols__main">
+        <header class="section__head">
+          <div>
+            <h2 class="section__title"><%- home.latest_title || '最新上架' %></h2>
+            <p class="section__desc"><%- home.latest_desc || '' %></p>
+          </div>
+          <a class="section__more" href="<%- url_for('/archives/') %>">全部产品<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
+        </header>
+        <div class="grid grid--products grid--products-3">
+          <% latestList.forEach(function (post) { %>
+          <%- partial('_partial/product-card', { item: post }) %>
+          <% }) %>
+        </div>
+      </div>
+
+      <aside class="cols__aside">
+        <div class="panel">
+          <h3 class="panel__title"><%- home.news_title || '新闻资讯' %></h3>
+          <ul class="newslist">
+            <% newsList.forEach(function (post) { %>
+            <li>
+              <a href="<%- xy_url(post.path) %>">
+                <span class="newslist__title"><%- post.title %></span>
+                <time datetime="<%- date_xml(post.date) %>"><%- date(post.date, 'YYYY-MM-DD') %></time>
+              </a>
+            </li>
+            <% }) %>
+            <% if (!newsList.length) { %><li class="newslist__empty">暂无资讯</li><% } %>
+          </ul>
+        </div>
+
+        <div class="panel panel--cta">
+          <h3 class="panel__title">仪器选型 · 技术咨询</h3>
+          <p class="panel__text">不确定该选哪款仪器？把您的检测需求告诉我们，工程师为您推荐合适机型。</p>
+          <a class="btn btn--primary btn--block" href="<%- url_for(theme.contact_url || '/contact/') %>">立即咨询</a>
+          <a class="btn btn--line btn--block" href="tel:0757-22333012"><%= (theme.company || {}).phone || '0757-22333012' %></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section trust">
+  <div class="container">
+    <div class="trust__grid">
+      <div class="trust__item">
+        <span class="trust__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.4 3.4 8.3 8 9 4.6-.7 8-4.6 8-9V6l-8-3z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3>正品保障</h3><p>正规渠道供货，原厂质保</p>
+      </div>
+      <div class="trust__item">
+        <span class="trust__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 3v6h6"/></svg></span>
+        <h3>按需选型</h3><p>工程师一对一技术选型建议</p>
+      </div>
+      <div class="trust__item">
+        <span class="trust__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.8"/><circle cx="17.5" cy="17" r="1.8"/></svg></span>
+        <h3>快速交付</h3><p>库存充足，物流高效配送</p>
+      </div>
+      <div class="trust__item">
+        <span class="trust__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v2"/><rect x="2" y="14" width="4" height="6" rx="1.5"/><rect x="18" y="14" width="4" height="6" rx="1.5"/><path d="M12 19v1a2 2 0 0 0 2 2h2"/></svg></span>
+        <h3>售后支持</h3><p>安装培训与长期技术响应</p>
+      </div>
+    </div>
+  </div>
+</section>

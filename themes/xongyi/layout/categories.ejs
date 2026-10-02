@@ -1,0 +1,36 @@
+<%- partial('_partial/page-head', {
+  heading: '产品分类',
+  subheading: '按应用领域浏览全部检测仪器与实验设备',
+  crumbs: [{ label: '产品分类' }],
+  total: site.posts.length
+}) %>
+
+<div class="container section">
+  <h2 class="block-title">产品分类</h2>
+  <div class="catdir">
+    <% (theme.product_categories || []).forEach(function (name) { %>
+    <a class="catdir__item" href="<%- cat_url(name) %>">
+      <span class="catdir__icon"><%- cat_icon(name) %></span>
+      <span class="catdir__body">
+        <strong><%- cat_name(name) %></strong>
+        <em><%- cat_desc(name) %></em>
+      </span>
+      <span class="catdir__count"><%- cat_count(name) %><small>件</small></span>
+    </a>
+    <% }) %>
+  </div>
+
+  <h2 class="block-title">新闻资讯</h2>
+  <div class="catdir">
+    <% (theme.news_categories || []).forEach(function (name) { %>
+    <a class="catdir__item" href="<%- cat_url(name) %>">
+      <span class="catdir__icon"><%- cat_icon(name) %></span>
+      <span class="catdir__body">
+        <strong><%- cat_name(name) %></strong>
+        <em><%- cat_desc(name) %></em>
+      </span>
+      <span class="catdir__count"><%- cat_count(name) %><small>篇</small></span>
+    </a>
+    <% }) %>
+  </div>
+</div>

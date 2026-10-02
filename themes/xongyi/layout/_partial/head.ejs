@@ -1,0 +1,48 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="#0d5c9c">
+  <%
+    var siteTitle = config.title || '雄亿仪器网';
+    var pageTitle;
+    if (is_home()) {
+      pageTitle = siteTitle + (config.subtitle ? ' - ' + config.subtitle : '');
+    } else if (page.title) {
+      pageTitle = page.title + ' - ' + siteTitle;
+    } else {
+      pageTitle = siteTitle;
+    }
+
+    var desc = page.description || config.description || '';
+    var keywords = config.keywords || '';
+    if (page.tags && page.tags.length) {
+      var tks = [];
+      page.tags.each(function (t) { tks.push(t.name); });
+      if (tks.length) keywords = page.title + ',' + tks.join(',') + ',' + keywords;
+    } else if (page.title && !is_home()) {
+      keywords = page.title + ',' + keywords;
+    }
+
+    var canonical = page.permalink || (config.url + '/');
+  %>
+  <title><%= pageTitle %></title>
+  <meta name="description" content="<%= desc %>">
+  <meta name="keywords" content="<%= keywords %>">
+  <meta name="author" content="<%= config.author || '' %>">
+  <link rel="canonical" href="<%= canonical %>">
+  <meta name="robots" content="index,follow">
+
+  <meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>">
+  <meta property="og:title" content="<%= pageTitle %>">
+  <meta property="og:description" content="<%= desc %>">
+  <meta property="og:url" content="<%= canonical %>">
+  <meta property="og:site_name" content="<%= siteTitle %>">
+  <% if (is_post() && page.cover) { %>
+  <meta property="og:image" content="<%= config.url + page.cover %>">
+  <% } %>
+
+  <link rel="icon" href="<%- url_for('/images/favicon.svg') %>" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="<%- url_for('/images/favicon.svg') %>">
+  <link rel="stylesheet" href="<%- url_for('/css/style.css') %>">
+</head>

@@ -1,0 +1,107 @@
+<%
+  var currentPath = '/' + (page.path || '');
+  function isActive(target) {
+    if (!target) return false;
+    if (target === '/') return is_home();
+    return currentPath.indexOf(target.replace(/index\.html$/, '')) === 0;
+  }
+  var co = theme.company || {};
+  var aboutUrl = theme.about_url || '/about-us/';
+  var contactUrl = theme.contact_url || '/contact/';
+%>
+<header class="site-header" id="siteHeader">
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span class="topbar__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></svg>
+        <span>服务热线</span>
+        <a href="tel:0757-22333012"><%= co.phone || '0757-22333012' %></a>
+      </span>
+      <span class="topbar__item hide-sm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <a href="mailto:<%= co.email || 'sales@xongyi.com' %>"><%= co.email || 'sales@xongyi.com' %></a>
+      </span>
+      <span class="topbar__spacer"></span>
+      <span class="topbar__item hide-sm"><a href="<%- url_for(aboutUrl) %>">企业介绍</a></span>
+      <span class="topbar__item hide-sm"><a href="<%- url_for(contactUrl) %>">联系我们</a></span>
+      <a class="topbar__item topbar__search" href="<%- url_for('/search/') %>" aria-label="搜索">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="headerbar">
+    <div class="container headerbar__inner">
+      <a class="brand" href="<%- url_for('/') %>" aria-label="<%= theme.brand && theme.brand.name || '雄亿仪器' %>">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#xyg)"/>
+            <path d="M14 30.5 20 17l4 8 4-8 6 13.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="32.5" cy="17" r="2.4" fill="#ffd166"/>
+            <defs>
+              <linearGradient id="xyg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#1577c6"/><stop offset="1" stop-color="#0a4a7d"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <strong><%= theme.brand && theme.brand.logo_text || '雄亿仪器' %></strong>
+          <em><%= theme.brand && theme.brand.logo_sub || 'XONGYI INSTRUMENTS' %></em>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="展开菜单" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav" aria-label="主导航">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link <%= isActive('/') ? 'is-active' : '' %>" href="<%- url_for('/') %>">首页</a>
+          </li>
+          <li class="nav__item has-sub">
+            <a class="nav__link <%= isActive('/archives') ? 'is-active' : '' %>" href="<%- url_for('/archives/') %>">
+              产品中心
+              <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="submenu">
+              <ul>
+                <% (theme.product_categories || []).forEach(function (name) { %>
+                <li><a href="<%- cat_url(name) %>"><%- cat_name(name) %><span class="submenu__count"><%- cat_count(name) %></span></a></li>
+                <% }) %>
+                <li class="submenu__all"><a href="<%- url_for('/archives/') %>">全部产品 →</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item has-sub">
+            <a class="nav__link" href="<%- cat_url((theme.news_categories || [])[0] || 'news') %>">
+              新闻资讯
+              <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="submenu submenu--sm">
+              <ul>
+                <% (theme.news_categories || []).forEach(function (name) { %>
+                <li><a href="<%- cat_url(name) %>"><%- cat_name(name) %><span class="submenu__count"><%- cat_count(name) %></span></a></li>
+                <% }) %>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link <%= isActive(aboutUrl) ? 'is-active' : '' %>" href="<%- url_for(aboutUrl) %>">企业介绍</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link <%= isActive(contactUrl) ? 'is-active' : '' %>" href="<%- url_for(contactUrl) %>">联系我们</a>
+          </li>
+        </ul>
+
+        <form class="nav-search" action="<%- url_for('/search/') %>" method="get" role="search">
+          <input type="search" name="q" placeholder="搜索产品" aria-label="搜索产品">
+          <button type="submit" aria-label="搜索">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+          </button>
+        </form>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,123 @@
+<%
+  var pc = primary_category(page);
+  var cats = [];
+  if (page.categories) page.categories.each(function (c) { cats.push(c); });
+  var tags = [];
+  if (page.tags) page.tags.each(function (t) { tags.push(t); });
+  var related = (theme.features && theme.features.related !== false) ? related_posts(page, 4) : [];
+  var co = theme.company || {};
+%>
+
+<%- partial('_partial/page-head', {
+  heading: page.title,
+  crumbs: [
+    pc ? { label: cat_name(pc.name), url: cat_url(pc.name) } : { label: '全部产品', url: url_for('/archives/') },
+    { label: page.title }
+  ],
+  total: null
+}) %>
+
+<div class="container section">
+  <div class="post-layout">
+    <div class="post-main">
+      <div class="post-meta">
+        <time datetime="<%- date_xml(page.date) %>">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <%- date(page.date, 'YYYY-MM-DD') %>
+        </time>
+        <% if (cats.length) { %>
+        <span class="post-meta__sep"></span>
+        <span class="post-meta__cats">
+          <% cats.forEach(function (c, i) { %><% if (i) { %>、<% } %><a href="<%- cat_url(c.name) %>"><%- cat_name(c.name) %></a><% }) %>
+        </span>
+        <% } %>
+      </div>
+
+      <div class="post-content" id="postContent">
+        <%- page.content %>
+      </div>
+
+      <% if (!page.content || !page.content.trim()) { %>
+      <p class="empty">该产品暂无详细说明，如需参数资料请联系我们。</p>
+      <% } %>
+
+      <% if (tags.length) { %>
+      <div class="post-tags">
+        <span class="post-tags__label">标签</span>
+        <% tags.forEach(function (t) { %>
+        <a class="chip chip--light" href="<%- xy_url(t.path) %>"><%- t.name %></a>
+        <% }) %>
+      </div>
+      <% } %>
+
+      <nav class="postnav" aria-label="相邻内容">
+        <% if (page.prev) { %>
+        <a class="postnav__item postnav__item--prev" href="<%- xy_url(page.prev.path) %>">
+          <span>上一篇</span>
+          <strong><%- page.prev.title %></strong>
+        </a>
+        <% } else { %><span class="postnav__item is-empty"></span><% } %>
+        <% if (page.next) { %>
+        <a class="postnav__item postnav__item--next" href="<%- xy_url(page.next.path) %>">
+          <span>下一篇</span>
+          <strong><%- page.next.title %></strong>
+        </a>
+        <% } else { %><span class="postnav__item is-empty"></span><% } %>
+      </nav>
+    </div>
+
+    <aside class="post-side">
+      <div class="side-card side-card--contact">
+        <h3 class="side-card__title">咨询此产品</h3>
+        <p class="side-card__text">获取详细参数、报价与货期，请联系我们的销售工程师。</p>
+        <ul class="side-contact">
+          <li><span>电话</span><a href="tel:0757-22333012"><%- co.phone || '' %></a></li>
+          <li><span>手机</span><%- co.mobile || '' %></li>
+          <li><span>邮箱</span><a href="mailto:<%= co.email %>"><%- co.email || '' %></a></li>
+          <li><span>联系人</span><%- co.contacts || '' %></li>
+        </ul>
+        <a class="btn btn--primary btn--block" href="<%- url_for(theme.contact_url || '/contact/') %>">查看联系方式</a>
+      </div>
+
+      <% if (related.length) { %>
+      <div class="side-card">
+        <h3 class="side-card__title">同类产品</h3>
+        <ul class="side-list">
+          <% related.forEach(function (p) { %>
+          <li>
+            <a href="<%- xy_url(p.path) %>">
+              <% var cv = first_image(p); %>
+              <span class="side-list__thumb">
+                <% if (cv) { %><img src="<%- cv %>" alt="<%- p.title %>" loading="lazy"><% } else { %><%- cat_icon('product') %><% } %>
+              </span>
+              <span class="side-list__title"><%- p.title %></span>
+            </a>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+      <% } %>
+    </aside>
+  </div>
+</div>
+
+<section class="section section--alt">
+  <div class="container">
+    <header class="section__head">
+      <div>
+        <h2 class="section__title">更多产品</h2>
+        <p class="section__desc">浏览其他分类的检测仪器与实验设备</p>
+      </div>
+      <a class="section__more" href="<%- url_for('/archives/') %>">全部产品<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
+    </header>
+    <div class="morecats">
+      <% (theme.product_categories || []).forEach(function (name) { %>
+      <a class="morecats__item" href="<%- cat_url(name) %>">
+        <span class="morecats__icon"><%- cat_icon(name) %></span>
+        <span class="morecats__name"><%- cat_name(name) %></span>
+        <span class="morecats__count"><%- cat_count(name) %> 件</span>
+      </a>
+      <% }) %>
+    </div>
+  </div>
+</section>

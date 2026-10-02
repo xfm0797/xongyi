@@ -1,0 +1,8 @@
+{
+  "name": "hexo-theme-xongyi",
+  "version": "1.0.0",
+  "description": "雄亿仪器网 B2B 仪器展示主题，适配 Hexo 7.x",
+  "keywords": ["hexo", "theme", "instrument", "catalog", "b2b"],
+  "license": "MIT",
+  "author": "xongyi"
+}

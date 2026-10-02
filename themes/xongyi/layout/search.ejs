@@ -1,0 +1,26 @@
+<%- partial('_partial/page-head', {
+  heading: '产品搜索',
+  subheading: '输入产品名称、型号或关键词，快速定位所需仪器',
+  crumbs: [{ label: '产品搜索' }],
+  total: null
+}) %>
+
+<div class="container section">
+  <form class="search-page" id="searchPage" role="search" action="<%- url_for('/search/') %>" method="get">
+    <div class="search-page__box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+      <input type="search" id="searchInput" name="q" placeholder="<%- (theme.home || {}).search_placeholder || '输入产品名称或关键词' %>" autocomplete="off" autofocus>
+      <button type="submit">搜索</button>
+    </div>
+    <div class="search-page__hints">
+      <span>热门：</span>
+      <% ['粘度计','测厚仪','色差仪','光泽度仪','分光光度计','试验箱','电子天平','硬度计'].forEach(function (k) { %>
+      <button type="button" class="chip chip--light js-hot" data-q="<%= k %>"><%= k %></button>
+      <% }) %>
+    </div>
+  </form>
+
+  <p class="search-status" id="searchStatus"></p>
+  <div class="grid grid--products" id="searchResults"></div>
+  <p class="empty" id="searchEmpty" hidden>没有找到匹配的产品，请尝试其他关键词。</p>
+</div>
